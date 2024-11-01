@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Applications</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 20px;
+        }
+        h1 {
+            color: #343a40;
+        }
+        table {
+            margin-top: 20px;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td {
+            vertical-align: middle;
+        }
+        .btn-back {
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Applications</h1>
+    <ul>
+        {% for application in applications %}
+            <li>
+                {{ application.applicant_name }} - {{ application.vacancy.title }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

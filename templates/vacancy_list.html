@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacancies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 20px;
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        .vacancy-list {
+            list-style: none;
+            padding: 0;
+        }
+        .vacancy-item {
+            padding: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .vacancy-item:last-child {
+            border-bottom: none;
+        }
+        .btn-edit, .btn-delete {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vacancies</h1>
+        <a href="{% url 'vacancy_create' %}" class="btn btn-success mb-3">Add New Vacancy</a>
+        <ul class="vacancy-list">
+            {% for vacancy in vacancies %}
+                <li class="vacancy-item">
+                    {{ vacancy.title }} - {{ vacancy.location }}
+                    <a href="{% url 'vacancy_update' vacancy.id %}" class="btn btn-warning btn-edit">Edit</a>
+                    <a href="{% url 'vacancy_delete' vacancy.id %}" class="btn btn-danger btn-delete">Delete</a>
+                </li>
+            {% empty %}
+                <li class="text-center">No vacancies found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
